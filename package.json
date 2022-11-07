@@ -9,7 +9,10 @@
   "author": "dana sou",
   "license": "ISC",
   "dependencies": {
+    "-": "^0.0.1",
     "dotenv": "^16.0.3",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "g": "^2.0.1",
+    "nodemon": "^2.0.20"
   }
 }
