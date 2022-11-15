@@ -15,21 +15,6 @@ router.get('/new', (req, res) => {
   res.render('places/new')
 })
 
-//get(show)
-router.get('/:places', (req, res) => {
-  let id = Number(req.params.id)
-  if (isNaN(id)) {
-    res.render('error404')
-  }
-  else if (!places[id]) {
-    res.render('error404')
-  }
-  else {
-    res.render('places/show', { place: places[id] })
-
-  }
-})
-
 //POST/places
 router.post('/', (req, res) => {
 
@@ -46,6 +31,39 @@ router.post('/', (req, res) => {
   places.push(req.body)
   res.send('POST /places')
 })
+
+//get(show)
+router.get('/:id', (req, res) => {
+  let id = Number(req.params.id)
+  if (isNaN(id)) {
+    res.render('error404')
+  }
+  else if (!places[id]) {
+    res.render('error404')
+  }
+  else {
+    res.render('places/show', { place: places[id], id})
+
+  }
+})
+
+router.delete('/:id', (req, res) => {
+  let id = Number(req.params.id)
+  if (isNaN(id)) {
+    res.render('error404')
+  }
+  else if (!places[id]) {
+    res.render('error404')
+  }
+  else {
+    places.splice(id, 1)
+    res.redirect('/places')
+  }
+})
+
+
+
+
 
 
 
