@@ -1,9 +1,10 @@
-module.exports =  [{
+module.exports =  [
+  {
     name: 'H-Thai-ML',
     city: 'Seattle',
     state: 'WA',
     cuisines: 'Thai, Pan-Asian',
-    pic: '/images/thaiDish.jpg'
+    pic: '/images/thaiDish.jpg',
   }, 
   
   {
@@ -11,6 +12,7 @@ module.exports =  [{
     city: 'Phoenix',
     state: 'AZ',
     cuisines: 'Coffee, Bakery',
-    pic: '/images/espresso.jpg'
-  }]
+    pic: '/images/espresso.jpg',
+  }
+]
 
