@@ -16,7 +16,7 @@ router.get('/new', (req, res) => {
 })
 
 //get(show)
-router.get('/places', (req, res) => {
+router.get('/:places', (req, res) => {
   let id = Number(req.params.id)
   if (isNaN(id)) {
     res.render('error404')
