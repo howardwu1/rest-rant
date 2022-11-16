@@ -4,104 +4,91 @@ const router = express.Router();
 const places = require('../models/places.js');
 
 // GET /places
-router.get('/', (req, res) => { 
-res.render('places/index', {places})
+router.get("/", (req, res) => {
+  res.render("places/index", { places });
 });
 
-//GET/places/new
-router.get('/new', (req, res) => {
-  res.render('places/new')
+router.get("/new", (req, res) => {
+  res.render("places/new");
 });
 
-//POST/places
-router.post('/', (req, res) => {
+router.post("/", (req, res) => {
   if (!req.body.pic) {
     // Default image if one is not provided
-    req.body.pic = 'http://placekitten.com/400/400'
+    req.body.pic = "http://placekitten.com/400/400";
   }
   if (!req.body.city) {
-    req.body.city = 'Anytown'
+    req.body.city = "Anytown";
   }
   if (!req.body.state) {
-    req.body.state = 'USA'
+    req.body.state = "USA";
   }
-  places.push(req.body)
-  res.redirect('/places');
+  places.push(req.body);
+  res.redirect("/places");
 });
 
-//show
-router.get('/:id', (req, res) => {
-  let id = Number(req.params.id)
+// SHOW
+router.get("/:id", (req, res) => {
+  let id = Number(req.params.id);
   if (isNaN(id)) {
-    res.render('error404')
-  }
-  else if (!places[id]) {
-    res.render('error404')
-  }
-  else {
-    res.render('places/show', { place: places[id], id})
-
+    res.render("error404");
+  } else if (!places[id]) {
+    res.render("error404");
+  } else {
+    res.render("places/show", { place: places[id], id });
   }
 });
 
-//delete
-router.delete('/:id', (req, res) => {
-  let id = Number(req.params.id)
+//EDIT
+router.get("/:id/edit", (req, res) => {
+  let id = Number(req.params.id);
   if (isNaN(id)) {
-    res.render('error404')
-  }
-  else if (!places[id]) {
-    res.render('error404')
-  }
-  else {
-    places.splice(id, 1)
-    res.redirect('/places')
+    res.render("error404");
+  } else if (!places[id]) {
+    res.render("error404");
+  } else {
+    res.render("places/edit", { place: places[id] });
   }
 });
 
-//edit
-router.get('/:id/edit', (req, res) => {
-  let id = Number(req.params.id)
+//DELETE
+router.delete("/:id", (req, res) => {
+  let id = Number(req.params.id);
   if (isNaN(id)) {
-      res.render('error404')
-  }
-  else if (!places[id]) {
-      res.render('error404')
-  }
-  else {
-    res.render('places/edit', { place: places[id] })
+    res.render("error404");
+  } else if (!places[id]) {
+    res.render("error404");
+  } else {
+    places.splice(id, 1);
+    res.redirect("/places");
   }
 });
 
-//put
-router.put('/:id', (req, res) => {
-  let id = Number(req.params.id)
+//put(update)
+router.put("/:id", (req, res) => {
+  let id = Number(req.params.id);
   if (isNaN(id)) {
-      res.render('error404')
-  }
-  else if (!places[id]) {
-      res.render('error404')
-  }
-  else {
-      // Dig into req.body and make sure data is valid
-      if (!req.body.pic) {
-          // Default image if one is not provided
-          req.body.pic = 'http://placekitten.com/400/400'
-      }
-      if (!req.body.city) {
-          req.body.city = 'Anytown'
-      }
-      if (!req.body.state) {
-          req.body.state = 'USA'
-      }
+    res.render("error404");
+  } else if (!places[id]) {
+    res.render("error404");
+  } else {
+    // Dig into req.body and make sure data is valid
+    if (!req.body.pic) {
+      // Default image if one is not provided
+      req.body.pic = "http://placekitten.com/400/400";
+    }
+    if (!req.body.city) {
+      req.body.city = "Anytown";
+    }
+    if (!req.body.state) {
+      req.body.state = "USA";
+    }
 
-      // Save the new data into places[id]
-      places[id] = req.body
-      res.redirect(`/places/${id}`)
+    // Save the new data into places[id]
+    places[id] = req.body;
+    res.redirect('/places/');
   }
 });
-
-
 
 
 
