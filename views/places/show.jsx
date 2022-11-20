@@ -11,7 +11,7 @@ function show (data) {
             <h2>Comments</h2>
               <p>No Comments</p>
 
-              <a href={`/placecs/${data.id}/edit`} className="btn btn-warning"> Edit</a>  
+              <a href={`/places/${data.id}/edit`} className="btn btn-warning"> Edit</a>  
               <form method="POST" action={`/places/${data.id}?_method=DELETE`}> 
                 <button type="submit" className="btn btn-danger">Delete</button>
               </form>    
