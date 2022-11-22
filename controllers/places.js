@@ -26,12 +26,12 @@ router.post('/', (req, res) => {
   })
 })
 
-
+//new
 router.get('/new', (req, res) => {
   res.render('places/new')
 })
 
-
+//show
 router.get('/:id', (req, res) => {
   db.Place.findById(req.params.id)
   .then(place => {
@@ -43,18 +43,22 @@ router.get('/:id', (req, res) => {
   })
 })
 
-
+//update
 router.put('/:id', (req, res) => {
   res.send('PUT /places/:id stub')
 })
 
+
+//delete
 router.delete('/:id', (req, res) => {
   res.send('DELETE /places/:id stub')
 })
 
+//edit
 router.get('/:id/edit', (req, res) => {
   res.send('GET edit form stub')
 })
+
 
 router.post('/:id/rant', (req, res) => {
   res.send('GET /places/:id/rant stub')
@@ -63,5 +67,4 @@ router.post('/:id/rant', (req, res) => {
 router.delete('/:id/rant/:rantId', (req, res) => {
     res.send('GET /places/:id/rant/:rantId stub')
 })
-
 module.exports = router
