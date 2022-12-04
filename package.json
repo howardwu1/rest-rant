@@ -2,6 +2,10 @@
   "name": "rest-rant",
   "version": "1.0.0",
   "description": "rest-rat project",
+  "engines":{
+    "node": "18.8"
+  },
+
   "main": "server.js",
   "scripts": {
     
