@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "rest-rat project",
   "engines": {
-    "node": "16.1"
+    "node": "16.18"
   },
   "main": "server.js",
   "scripts": {
